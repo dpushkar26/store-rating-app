@@ -15,6 +15,15 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
+// Health check routes
+app.get('/', (req, res) => {
+  res.json({ status: 'ok', message: 'Store Rating Platform API is running' });
+});
+
+app.get('/api/v1', (req, res) => {
+  res.json({ status: 'ok', message: 'Store Rating Platform API v1 is active' });
+});
+
 // API Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
